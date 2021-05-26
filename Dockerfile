@@ -18,14 +18,11 @@ RUN apt-get update && \
 RUN useradd -ms /bin/bash jekyll && \
     usermod -u 1000 jekyll
 
-USER jekyll
-
 #Install jekyll
-RUN gem install --user-install jekyll:${JEKYLL_VERSION} bundler jekyll-theme-minima
+RUN gem install jekyll:${JEKYLL_VERSION} bundler minimal-mistakes-jekyll
 
 EXPOSE 4000
 
-COPY main.scss /var/lib/gems/2.5.0/gems/minima-2.5.1/assets/main.scss
+USER jekyll
 
-#CMD ["bundle", "exec", "jekyll", "serve", "--port", "4000", "--host", "0.0.0.0"]
-CMD ["/home/jekyll/.gem/ruby/2.5.0/bin/bundle", "exec", "/home/jekyll/.gem/ruby/2.5.0/bin/jekyll", "serve", "--port", "4000", "--host", "0.0.0.0"]
+CMD ["/usr/local/bin/bundle", "exec", "/var/lib/gems/2.5.0/gems/jekyll-4.2.0/exe/jekyll", "serve", "--port", "4000", "--host", "0.0.0.0"]
