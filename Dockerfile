@@ -8,7 +8,7 @@ FROM debian:latest
 
 MAINTAINER hihouhou < hihouhou@hihouhou.com >
 
-ENV JEKYLL_VERSION 4.3.1
+ENV JEKYLL_VERSION 4.3.2
 WORKDIR /srv/jekyll/website
 
 # Update & install packages for jekyll
